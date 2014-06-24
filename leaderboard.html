@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="QuizPOC">
+<head>
+  <title>QuizPOC</title>
+  <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="style/hpstyle.css"/>
+  <link rel="stylesheet" type="text/css" href="style/quiz.css"/>
+
+  <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.js"></script>
+  <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="js/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+  <script type="text/javascript" src="js/app.js" ></script>
+  <script type="text/javascript" src="js/controllers.js" ></script>
+  <script type="text/javascript" src="js/filters.js" ></script>
+  <script type="text/javascript" src="js/dialogs.js"></script>
+  <script type="text/javascript" src="js/leaderCtrl.js"></script>
+</head>
+ <body ng-controller="LeaderCtrl">
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>QuizPOC</h1>
+      </div>
+      <h1>
+      Leaderboards
+      </h1>
+      <p>
+      	See where you rank.
+      </p>
+      <br/>
+      <input type="text" class="form-control" placeholder="Search for player by name..." ng-model="search.name">
+      <br />      
+      <pagination total-items="totalItems" page="currentPage" on-select-page="setPage(page)"
+      totalItems="{{totalItems}}" max-size="10"></pagination> 
+        <table class='table table-bordered'>
+        <thead>
+          <tr><th>Current Rank</th><th>Name</th><th>Fastest Quiz</th><th>Best Score</th><th>Total Score</th></tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="ldr in leaders | filter:search | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
+            <td>{{ldr.rank}}</td><td>{{ldr.name}}</td><td>{{ldr.fastest}}</td><td>{{ldr.best}}</td><td>{{ldr.total}}</td>
+          </tr>
+        </tbody>
+        </table>                                          
+    </div>
+  </body>
+</html>

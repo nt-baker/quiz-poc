@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="QuizPOC">
+<head>
+  <title>QuizPOC</title>
+  <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="style/quiz.css"/>  
+
+  <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.js"></script>
+  <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="js/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+  <script type="text/javascript" src="js/app.js" ></script>
+  <script type="text/javascript" src="js/controllers.js" ></script>
+  <script type="text/javascript" src="js/filters.js" ></script>
+  <script type="text/javascript" src="js/dialogs.js"></script>
+  <!--[if lte IE 8]>
+  <style type="text/css">
+  .page-ie8-hide {
+    display: none;
+  }
+  .page-ie8-show {
+    display: block;
+  }
+  </style>
+  <![endif]-->
+
+</head>
+<body ng-controller="QstnCtrl">  
+  <div class="container">
+    <div class="page-header">
+      <h1>QuizPOC</h1>
+    </div>
+    <div class="page-ie8-show">
+      <h3>You're using Internet Explorer 8</h3>
+      <p>This browser is out of date, please use a modern browser for the best QuizPOC experience.</p>
+      <p>We recommend downloading <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a> or 
+        <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a>.
+      </p>
+    </div>
+    <div class="page-ie8-hide">
+      <h1>
+      {{quizName()}}
+      </h1>      
+      <p>Current Score: {{score()}}/{{maxScore}}</p>
+      <h1 ng-if="incomplete == false">Complete!</h1>
+      <p><a href="leaderboard.html">Check the Leaderboards</a></p>
+      <h1 ng-if="incomplete">
+      {{currentQstn().text}}
+      </h1>    
+      <ul ng-if="incomplete == false">
+        <li ng-repeat="time in times">{{time}}</li>
+      </ul>
+      <div class="progress" ng-if="incomplete">
+        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{barWidth}}%">
+          <span class="sr-only">40% Complete (success)</span>
+        </div>
+      </div>
+      <br/>
+      <div class="row" ng-if="incomplete">
+        <div class="col-md-6">
+          <a class="btn btn-max btn-block btn-quiz" ng-click="nextQstn('ans1')">{{currentQstn().ans1}}</a>
+        </div>
+        <div class="col-md-6">
+          <a class="btn btn-max btn-block btn-quiz" ng-click="nextQstn('ans2')">{{currentQstn().ans2}}</a>
+        </div>
+      </div>
+      <br/>
+      <div class="row" ng-if="incomplete">
+        <div class="col-md-6">
+          <a class="btn btn-max btn-block btn-quiz" ng-click="nextQstn('ans3')">{{currentQstn().ans3}}</a>
+        </div>
+        <div class="col-md-6">
+          <a class="btn btn-max btn-block btn-quiz" ng-click="nextQstn('ans4')">{{currentQstn().ans4}}</a>
+        </div>
+      </div>
+      <br />              
+    </div>    
+  </div>
+  <div id="chievo" ng-if="showChievo">
+    <h4>Achievement: {{achievement.name}}</h4>
+    <p>{{achievement.desc}}</p>
+  </div>
+</body>
+</html>

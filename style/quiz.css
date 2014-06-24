@@ -1,0 +1,88 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  font-size: 19px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: rgb(232,232,232);
+  text-align:center;
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.page-header > h1{
+  color: rgb(240,83,50);
+  font-size: 90px;
+}
+.page-header > h1 > span.smaller{
+
+  font-size: 40px;
+}
+.page-header{
+  border-bottom:2px solid rgb(0,161,221);
+}
+.centered{
+  text-align:center;
+}
+
+.btn-max{
+  font-size:40px;
+  height:75px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.btn-cardinal{
+  background-color: #C33B22;
+  color:white;
+}
+.btn-purp{
+  background-color:#822980;
+  color:white;
+}
+.btn-quiz{
+  border: 1px solid grey;
+  font-size:25px;
+}
+
+#chievo {
+  background-color: #FFF;
+  color: rgb(0,161,221);
+
+  -moz-background-clip: padding; 
+  -webkit-background-clip: padding;
+  background-clip: padding-box; 
+
+  border: 10px solid rgba(204,204,204,0.3);
+
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px; 
+
+  padding: 15px;
+
+  position: absolute; 
+  bottom: 65px;
+  left: 50px;
+}
+
+#chievo p {
+  color: rgb(240,83,50);
+}
+
+.page-ie8-show {
+  display: none;
+}
